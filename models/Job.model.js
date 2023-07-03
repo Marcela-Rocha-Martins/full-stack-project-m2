@@ -13,6 +13,14 @@ const jobSchema = new Schema(
       type: String,
       required: false
     },
+    jobCV: {
+        type: String,
+        required: false
+      },
+    coverLetter: {
+        type: String,
+        required: false
+      },
     jobApplicationDescription: {
       type: String,
       required: true
