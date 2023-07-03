@@ -1,0 +1,60 @@
+/* CSS styles for jobview.html */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgb(196, 167, 167);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.column1,
+.column2,
+.column3 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.content {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.job-title {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.position {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.description {
+    margin-bottom: 20px;
+}
+
+.links {
+    color: #00b7ff;
+    margin-bottom: 10px;
+}
+
+.files {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.notes {
+    margin-bottom: 10px;
+    color: #888;
+}
+
+.next-action {
+    font-weight: bold;
+    color: #333;
+}
+

@@ -62,16 +62,10 @@ nav {
   .social-media li {
     margin-bottom: 5px;
   }
-
-  
   /* regular settings */
   body {
     padding: 50px;
     font: 14px "Montserrat", sans-serif;
-  }
-  
-  h1 {
-    color: #150000;
   }
   
   a {
@@ -79,6 +73,19 @@ nav {
   }
   
   h1 {
-    color: 15px;
-  }
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #150000;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+p {
+    margin-bottom: 10px;
+}
   
