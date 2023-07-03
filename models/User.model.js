@@ -16,15 +16,15 @@ const userSchema = new Schema(
       unique: true,
       lowercase: true,
       trim: true
-    },
-    avatarUrl: {
-      type: String
-    },
-    appliedJobs: [{ type: Schema.ObjectId, ref: "Job" }],
-    passwordHash: {
-      type: String,
-      required: [true, "Password is required!"]
     }
+    // avatarUrl: {
+    //   type: String
+    // },
+    // appliedJobs: [{ type: Schema.ObjectId, ref: "Job" }],
+    // passwordHash: {
+    //   type: String,
+    //   required: [true, "Password is required!"]
+    // }
   },
   {
     timestamps: true
