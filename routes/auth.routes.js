@@ -1,14 +1,14 @@
-
 const { Router } = require("express");
 const User = require("../models/User.model");
 const bcryptjs = require("bcryptjs");
 const saltRounds = 10;
-
 const router = new Router();
 
-router.get("/signup", (res, req) => {});
+// GET route to display the signup form to users
+router.get('/signup', (req, res) => res.render('auth/signup'));
 
-router.post("/signup", (req, res, next) => {
+// POST route to handle the signup form submission
+router.post('/signup', (req, res, next) => {
   const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
@@ -20,10 +20,11 @@ router.post("/signup", (req, res, next) => {
   if (!regex.test(password)) {
     res.status(500).render("auth/signup", {
       errorMessage:
-        "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter."
+        "Password needs to have at least 6 characters and must contain at least one number, one lowercase, and one uppercase letter."
     });
     return;
   }
+
   bcryptjs
     .genSalt(saltRounds)
     .then((salt) => bcryptjs.hash(password, salt))
@@ -34,14 +35,16 @@ router.post("/signup", (req, res, next) => {
         passwordHash: hashedPassword
       });
     })
-    // Uncomment this line later
-    // .then(res.redirect('/userProfile'))
+    .then(() => {
+      // Redirect the user to the profile page after successful signup
+      res.redirect('/profile-page');
+    })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
         res.status(500).render("auth/signup", { errorMessage: error.message });
       } else if (error.code === 11000) {
         console.log(
-          "Username and email need to be unique. Either username or email is already taken"
+          "Username and email need to be unique. Either username or email is already taken."
         );
         res.status(500).render("auth/signup", {
           errorMessage:
@@ -53,29 +56,18 @@ router.post("/signup", (req, res, next) => {
     });
 });
 
-router.get("/login", (req, res) => res.send("Hello from the login page"));
+// GET route to display the login form to users
+router.get('/', (req, res) => res.redirect('/profile-page'));
 
-router.get("/userProfile", (req, res) => res.send("This is your profile Page"));
+// POST route to handle the login form submission
+router.post('/', (req, res) => {
+  // Your existing login logic and authentication here
 
-// routes/auth.routes.js
+  // Redirect the user to the profile page if login is successful
+  res.redirect('/profile-page');
+});
 
-const { Router } = require('express');
-const router = new Router();
-
-const mongoose = require('mongoose');
-const User = require('../models/User.model');
-/* 
-const bcryptjs = require('bcryptjs');
-const saltRounds = 10; */
-
-/* const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard.js');
- */
-
-
-// GET route ==> to display the signup form to users
-router.get('/signup', (req, res) => res.render('auth/signup'));
-
-router.get('/login', (req, res) => res.render('auth/login'));
-
+// GET route to display the profile page
+router.get('/profile-page', (req, res) => res.render('profile-page'));
 
 module.exports = router;

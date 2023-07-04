@@ -1,14 +1,10 @@
 const { Schema, model } = require("mongoose");
 
-// TODO: Please make sure you edit the User model to whatever makes sense in this case
-
-
 const userSchema = new Schema(
   {
     name: {
       type: String,
       trim: true,
-      required: true
       required: [true, "Username is required!"],
       unique: true
 
@@ -38,10 +34,8 @@ const userSchema = new Schema(
       type: String
     },
     customAvatar: {
-      type: String
-
+      type: String,
       required: [true, "Password is required!"]
-
     }
   },
   {
