@@ -5,10 +5,10 @@ const saltRounds = 10;
 const router = new Router();
 
 // GET route to display the signup form to users
-router.get('/signup', (req, res) => res.render('auth/signup'));
+router.get("/signup", (req, res) => res.render("signup"));
 
 // POST route to handle the signup form submission
-router.post('/signup', (req, res, next) => {
+router.post("/signup", (req, res, next) => {
   const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
@@ -37,7 +37,7 @@ router.post('/signup', (req, res, next) => {
     })
     .then(() => {
       // Redirect the user to the profile page after successful signup
-      res.redirect('/profile-page');
+      res.redirect("/profile-page");
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
@@ -57,18 +57,32 @@ router.post('/signup', (req, res, next) => {
 });
 
 // GET route to display the login form to users
-router.get('/', (req, res) => res.redirect('/profile-page'));
+router.get("/", (req, res) => res.redirect("/index"));
 
 // POST route to handle the login form submission
-router.post('/', (req, res) => {
+router.post("/", (req, res) => {
   // Your existing login logic and authentication here
+  const { email, password } = req.body;
 
+  if (email === "" || password === "") {
+    res.render("index", {
+      errorMessage: "Please enter both email and password to login"
+    });
+    return;
+  }
   // Redirect the user to the profile page if login is successful
-  res.redirect('/profile-page');
+  User.findOne({ email }).then((user) => {
+    if (!user) {
+      res.render("index", {
+        errorMessage: "User not found and/or incorrrect password"
+      });
+    }
+  });
+  res.redirect("");
 });
 
 // GET route to display the profile page
-router.get('/profile-page', (req, res) => res.render('profile-page'));
+router.get("/profile-page", (req, res) => res.render("profile-page"));
 
 
 // GET route to display the form to edit the profile
