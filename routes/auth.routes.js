@@ -12,7 +12,7 @@ router.post("/signup", (req, res, next) => {
   const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
-    res.render("auth/signup", { errorMessage: "All fields are mandatory" });
+    res.render("/signup", { errorMessage: "All fields are mandatory" });
     return;
   }
 
@@ -41,12 +41,12 @@ router.post("/signup", (req, res, next) => {
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
-        res.status(500).render("auth/signup", { errorMessage: error.message });
+        res.status(500).render("/signup", { errorMessage: error.message });
       } else if (error.code === 11000) {
         console.log(
           "Username and email need to be unique. Either username or email is already taken."
         );
-        res.status(500).render("auth/signup", {
+        res.status(500).render("/signup", {
           errorMessage:
             "User not found and/or incorrect password and email combination."
         });
@@ -57,10 +57,10 @@ router.post("/signup", (req, res, next) => {
 });
 
 // GET route to display the login form to users
-router.get("/", (req, res) => res.redirect("/index"));
+router.get("/login", (req, res, next) => res.render("/index"));
 
 // POST route to handle the login form submission
-router.post("/", (req, res) => {
+router.post("/profile-page", (req, res, next) => {
   // Your existing login logic and authentication here
   const { email, password } = req.body;
 
@@ -71,14 +71,22 @@ router.post("/", (req, res) => {
     return;
   }
   // Redirect the user to the profile page if login is successful
-  User.findOne({ email }).then((user) => {
-    if (!user) {
-      res.render("index", {
-        errorMessage: "User not found and/or incorrrect password"
-      });
-    }
-  });
-  res.redirect("");
+  User.findOne({ email })
+    .then((user) => {
+      if (!user) {
+        res.render("index", {
+          errorMessage: "User not found and/or incorrrect password"
+        });
+        return;
+      } else if (bcryptjs.compareSync(password, user.passwordHash)) {
+        res.render("profile-page", { user });
+      } else {
+        res.render("index", {
+          errorMessage: "User not found/and or incorrect password"
+        });
+      }
+    })
+    .catch((error) => next(error));
 });
 
 // GET route to display the profile page
