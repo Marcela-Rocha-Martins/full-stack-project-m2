@@ -9,7 +9,6 @@
   style="display: inline-block; padding: 20px 40px; font-size: 24px; background-color: #fca311; color: #ffffff; border-radius: 5px; text-decoration: none;"
 >JobQuest Sign Up</a> }}
 
-
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
@@ -29,7 +28,8 @@
 
           <form action="/login" method="POST">
 
-            <label> Email
+            <label>
+              Email
               <input type="email" name="email" placeholder="Email Adress" />
             </label>
 
@@ -37,7 +37,8 @@
               <input type="password" name="password" placeholder="********" />
             </label>
 
-            <a href="/profile-page" class="button">Login</a>
+            {{! <a class="button">Login</a> }}
+            <button class="button" type="submit">Login</button>
 
             {{#if errorMessage}}
               <p class="error">{{errorMessage}}</p>
