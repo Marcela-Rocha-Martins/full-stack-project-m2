@@ -12,7 +12,7 @@ router.post("/signup", (req, res, next) => {
   const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
-    res.render("/signup", { errorMessage: "All fields are mandatory" });
+    res.render("signup", { errorMessage: "All fields are mandatory" });
     return;
   }
 
@@ -61,6 +61,7 @@ router.get("/login", (req, res, next) => res.render("/index"));
 
 // POST route to handle the login form submission
 router.post("/profile-page", (req, res, next) => {
+  console.log("SESSION =====> ", req.session);
   // Your existing login logic and authentication here
   const { email, password } = req.body;
 
@@ -79,7 +80,9 @@ router.post("/profile-page", (req, res, next) => {
         });
         return;
       } else if (bcryptjs.compareSync(password, user.passwordHash)) {
-        res.render("profile-page", { user });
+        // console.log(user);
+        req.session.currentUser = user;
+        res.redirect("/profile-page");
       } else {
         res.render("index", {
           errorMessage: "User not found/and or incorrect password"
@@ -90,6 +93,15 @@ router.post("/profile-page", (req, res, next) => {
 });
 
 // GET route to display the profile page
-router.get("/profile-page", (req, res) => res.render("profile-page"));
+router.get("/profile-page", (req, res) =>
+  res.render("profile-page", { userInSession: req.session.currentUser })
+);
+
+router.post("/logout", (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) next(err);
+    res.redirect("/");
+  });
+});
 
 module.exports = router;
