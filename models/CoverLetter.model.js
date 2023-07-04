@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const cvSchema = new Schema(
+const coverLetterSchema = new Schema(
   {
     title: {
       type: String,
@@ -10,9 +10,9 @@ const cvSchema = new Schema(
       type: String,
       required: true
     },
-    userId: {
-      type: Number,
-      required: true
+    user: {
+      type: Schema.ObjectId,
+      ref: "User"
     },
     fileUrl: {
       type: String
@@ -23,6 +23,6 @@ const cvSchema = new Schema(
   }
 );
 
-const CV = model("CV", cvSchema);
+const CoverLetter = model("CoverLetter", coverLetterSchema);
 
-module.exports = CV;
+module.exports = CoverLetter;

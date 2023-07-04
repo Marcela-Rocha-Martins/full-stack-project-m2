@@ -7,7 +7,6 @@ const userSchema = new Schema(
       trim: true,
       required: [true, "Username is required!"],
       unique: true
-
     },
     email: {
       type: String,
@@ -26,16 +25,9 @@ const userSchema = new Schema(
 
       required: true
     },
-    applicationJob: {
-      type: Schema.Types.ObjectId,
-      ref: "Job" // WE NEED TO CHANGE IF NECESSARY
-    },
     CVfile: {
-      type: String
-    },
-    customAvatar: {
-      type: String,
-      required: [true, "Password is required!"]
+      type: Schema.ObjectId,
+      ref: "CV"
     }
   },
   {
