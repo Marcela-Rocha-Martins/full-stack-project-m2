@@ -28,8 +28,7 @@
 
           <form action="/login" method="POST">
 
-            <label>
-              Email
+            <label> Email
               <input type="email" name="email" placeholder="Email Adress" />
             </label>
 
@@ -37,15 +36,14 @@
               <input type="password" name="password" placeholder="********" />
             </label>
 
-            {{! <a class="button">Login</a> }}
-            <button class="button" type="submit">Login</button>
+            <a href="/profile-page" class="button">Login</a>
 
             {{#if errorMessage}}
               <p class="error">{{errorMessage}}</p>
             {{/if}}
 
             <p>Don't have an account?
-              <a href="/signup" class="button">Sign up now</a></p>
+              <a href="/signup" class="button">Create now</a></p>
 
           </form>
 

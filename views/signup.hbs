@@ -1,30 +1,54 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/stylesheets/signup.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/layout.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Signup</h2>
+      <div class="signup-container">
+        <div id="form">
+          <form action="/signup" method="POST">
+            <label>
+              Username
+              <input type="text" name="username" placeholder="Username" />
+            </label>
 
-<h1>Sign Up</h1>
+             <label>
+              Name
+              <input type="text" name="username" placeholder="Name" />
+            </label>
 
-{{!-- views/auth/signup.hbs --}}
+              <label>
+              Last Name
+              <input type="text" name="username" placeholder="Last Name" />
+            </label>
 
-<div id="form">
-  <h2>Signup</h2>
-  <form action="/signup" method="POST">
+            <label>
+              Email
+              <input type="email" name="email" placeholder="Email Address" />
+            </label>
 
-    <label> Username
-      <input type="text" name="username" placeholder="Full Name" />
-    </label>
+            <label>
+              Password
+              <input type="password" name="password" placeholder="********" />
+            </label>
+          
+            <a href="/profile-page" class="button">Create account</a>
 
-    <label> Email
-      <input type="email" name="email" placeholder="Email Adress" />
-    </label>
+            <!-- error message will be added here -->
+            {{#if errorMessage}}
+          <p class="error">{{errorMessage}}</p>
+          {{/if}}
 
-    <label> Password
-      <input type="password" name="password" placeholder="********" />
-    </label>
-
-    <button type="submit">Create account</button>
-
-    {{!-- error message will be added here --}}
-    {{#if errorMessage}}
-    <p class="error">{{errorMessage}}</p>
-  {{/if}}
-  </form>
-</div>
-
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

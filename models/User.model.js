@@ -2,10 +2,24 @@ const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema(
   {
-    name: {
+      username: {
       type: String,
       trim: true,
       required: [true, "Username is required!"],
+      unique: true
+
+    },
+      firstName: {
+      type: String,
+      trim: true,
+      required: [true, "name is required!"],
+      unique: true
+
+    },
+      lastName: {
+      type: String,
+      trim: true,
+      required: [true, "lastname is required!"],
       unique: true
 
     },
@@ -26,10 +40,6 @@ const userSchema = new Schema(
 
       required: true
     },
-    applicationJob: {
-      type: Schema.Types.ObjectId,
-      ref: "Job" // WE NEED TO CHANGE IF NECESSARY
-    },
     CVfile: {
       type: String
     },
@@ -43,5 +53,4 @@ const userSchema = new Schema(
   }
 );
 const User = model("User", userSchema);
-
 module.exports = User;
