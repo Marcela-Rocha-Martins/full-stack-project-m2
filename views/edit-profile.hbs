@@ -1,4 +1,65 @@
-<h1>This is the page to edit the profiles</h1>
-<h2>
-You can do this here
-</h2>
+<html>
+  <head>
+   <link rel="stylesheet" type="text/css" href="/stylesheets/edit-profile.css" />
+    <link rel="stylesheet" href="stylesheets/layout.css" />
+  </head>
+  <body>
+
+   <div class="container">
+  <div class="form-container">
+    <h1>{{appTitle}}</h1>
+    <form id="edit-form">
+      <div class="profile-pic-container">
+          <label for="profile-pic-upload" class="upload-btn">
+              Upload Profile Picture
+              <input type="file" name="profilepic" accept="image/*" id="profile-pic-upload" />
+          </label>
+          <div class="profile-pic-preview-container">
+              <img id="profile-pic-preview" src="" alt="Profile Picture Preview" />
+          </div>
+      </div>
+
+      <label>
+        Display Name
+        <input type="text" name="username" placeholder="Display Name" class="input-field" />
+      </label>
+
+      <label>
+        Occupation
+        <input type="text" name="Occupation" placeholder="Occupation" class="input-field" />
+      </label>
+
+      <label>
+        Date of Birth
+        <input type="date" name="dob" placeholder="YYYY-MM-DD" class="input-field" />
+      </label>
+
+      <label>
+        Place of Birth
+        <input type="text" name="birthplace" placeholder="Place of Birth" class="input-field" />
+      </label>
+
+      <label>
+        Current Residency
+        <input type="text" name="residency" placeholder="Current Residency" class="input-field" />
+      </label>
+
+      <label>
+        Upload CVs
+        <input type="file" name="cvs" multiple class="input-field" />
+      </label>
+
+      <label>
+        Certificate
+        <input type="file" name="certificate" multiple class="input-field" />
+      </label>
+
+      <button type="submit" class="submit-btn">Save Changes</button>
+
+      {{! error message will be added here }}
+      {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+      {{/if}}
+    </form>
+  </div>
+</div>

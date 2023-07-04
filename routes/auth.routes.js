@@ -70,4 +70,11 @@ router.post('/', (req, res) => {
 // GET route to display the profile page
 router.get('/profile-page', (req, res) => res.render('profile-page'));
 
+
+// GET route to display the form to edit the profile
+router.get('/edit-profile', (req, res) => res.render('edit-profile'));
+
+// GET route to display the about project page
+router.get('/about-project', (req, res) => res.render('about-project'));
+
 module.exports = router;

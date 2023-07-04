@@ -33,7 +33,7 @@ nav {
   /* footer */
   footer {
     font-family: Poppins-Regular, sans-serif;
-    position: fixed;
+    position:static;
     bottom: 0;
     left: 0;
     height: 150px;
