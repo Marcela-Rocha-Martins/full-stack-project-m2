@@ -1,6 +1,5 @@
-<h1>{{appTitle}} 🚀</h1>
-<p>JobQuest</p>
-<a
+{{!-- <h1>{{appTitle}}</h1> --}}
+{{! <a
   href="/login"
   style="display: inline-block; padding: 20px 40px; font-size: 24px; background-color: #fca311; color: #ffffff; border-radius: 5px; text-decoration: none;"
 >JobQuest Log In</a>
@@ -8,4 +7,56 @@
 <a
   href="/signup"
   style="display: inline-block; padding: 20px 40px; font-size: 24px; background-color: #fca311; color: #ffffff; border-radius: 5px; text-decoration: none;"
->JobQuest Sign Up</a>
+>JobQuest Sign Up</a> }}
+
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
+    <link rel="stylesheet" href="stylesheets/layout.css" />
+  </head>
+  <body>
+
+    <div class="container">
+
+      <h1>{{appTitle}}</h1>
+
+      <div class="login-container">
+
+        <h2>Login</h2>
+
+        <div id="form">
+
+          <form action="/login" method="POST">
+
+            <label>
+              Email
+              <input type="email" name="email" placeholder="Email Adress" />
+            </label>
+
+            <label>Password
+              <input type="password" name="password" placeholder="********" />
+            </label>
+
+            {{! <a class="button">Login</a> }}
+            <button class="button" type="submit">Login</button>
+
+            {{#if errorMessage}}
+              <p class="error">{{errorMessage}}</p>
+            {{/if}}
+
+            <p>Don't have an account?
+              <a href="/signup" class="button">Sign up now</a></p>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+  </body>
+
+</html>

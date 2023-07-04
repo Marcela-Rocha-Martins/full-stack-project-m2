@@ -1,0 +1,63 @@
+<<<<<<< HEAD
+<h1>This is the user profile</h1>
+<h2>
+  this is the profile page
+</h2>
+<div>
+  <!-- Add the button for Edit Profile page here -->
+  <a href="/edit-profile" class="button">Edit Profile</a>
+</div>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Profile</title>
+    <link rel="stylesheet" href="/stylesheets/profile-page.css">
+    <link rel="stylesheet" href="/stylesheets/layout.css"/>
+</head>
+
+<body>
+
+  <form action=" " method="post"  enctype="multipart/form-data">
+<h2>Personal Information</h2>
+
+
+   <div class="column1">
+    <div class="profile-info">
+      <img src="placeholder.png" alt="User Picture">
+      <h2>{{userInSession.firstName}}</h2>
+      <p>{{userInSession.email}}</p>
+    </div>
+  </div>
+ 
+</form>
+
+
+
+
+<div class="filter-container">
+  <h2>Filter Job Applications</h2>
+  <form id="filterForm">
+    <label for="category">Category:</label>
+    <select id="category" name="category">
+      <option value="">All</option>
+      <option value="technology">Technology</option>
+      <option value="finance">Finance</option>
+      <option value="marketing">Marketing</option>
+    </select>
+
+    <label for="status">Status:</label>
+    <select id="status" name="status">
+      <option value="">All</option>
+      <option value="pending">Pending</option>
+      <option value="inProgress">In Progress</option>
+      <option value="completed">Completed</option>
+    </select>
+
+    <button type="submit">Filter</button>
+  </form>
+</div>
+<button id="Add" type="submit">Add</button>
+<button id="saveButton" class="btn btn-primary mt-2">edit</button>
+</body>
+>>>>>>> origin/dev
