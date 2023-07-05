@@ -7,22 +7,26 @@
 
     <div class="container">
 
-      <h1>{{appTitle}}</h1>
+        <div class="content1" style="background-image: url('/images/backgroundImage.jpg');">
 
-      <div class="login-container">
+        {{!-- <h1>aqui vai o conteudo da pagina</h1> --}}
 
-        <h2>Login</h2>
+      </div>
 
-        <div id="form">
+    <div class="login-container">
+
+      <div id="form">
+
+        <h2>Login to your account</h2>
 
           <form action="/profile-page" method="POST">
 
-            <label> Email
+            <label> 
               <input type="email" name="email" placeholder="Email Adress" />
             </label>
 
-            <label>Password
-              <input type="password" name="password" placeholder="********" />
+            <label>
+              <input type="password" name="password" placeholder="Password" />
             </label>
 
             <a href="/profile-page" class="button">Login</a>
@@ -32,7 +36,7 @@
             {{/if}}
 
             <p>Don't have an account?
-              <a href="/signup" class="button">Create now</a></p>
+            <a href="/signup" class="button">Create now</a></p>
 
           </form>
 
