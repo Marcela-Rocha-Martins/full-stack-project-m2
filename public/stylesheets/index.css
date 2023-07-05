@@ -42,6 +42,8 @@
   text-decoration: none;
   border-radius: 30px; /* Increase the border-radius to make it more oval-shaped */
   transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
 .login-container .button:hover {
