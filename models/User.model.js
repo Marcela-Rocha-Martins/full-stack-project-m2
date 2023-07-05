@@ -6,19 +6,17 @@ const userSchema = new Schema(
       type: String,
       trim: true,
       required: [true, "Username is required!"],
-      unique: true
+      unique: true,
     },
     firstName: {
       type: String,
       trim: true,
       required: [true, "name is required!"],
-      unique: true
     },
     lastName: {
       type: String,
       trim: true,
       required: [true, "lastname is required!"],
-      unique: true
     },
     email: {
       type: String,
@@ -26,27 +24,23 @@ const userSchema = new Schema(
       match: [/^\S+@\S+\.\S+$/, "Provide a valid email address please!"],
       unique: true,
       lowercase: true,
-      trim: true
+      trim: true,
     },
     avatarUrl: {
-      type: String
+      type: String,
     },
-    appliedJobs: [{ type: Schema.ObjectId, ref: "Job" }],
+    appliedJobs: [{ type: Schema.Types.ObjectId, ref: "Job" }],
+    
     passwordHash: {
       type: String,
-
-      required: true
+      required: true,
     },
     CVfile: {
-      type: String
-    },
-    customAvatar: {
       type: String,
-      required: [true, "Password is required!"]
-    }
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 const User = model("User", userSchema);
