@@ -29,7 +29,7 @@ router.post("/signup", (req, res, next) => {
     .genSalt(saltRounds)
     .then((salt) => bcryptjs.hash(password, salt))
     .then((hashedPassword) => {
-      User.create({
+      return User.create({
         username,
         email,
         passwordHash: hashedPassword
@@ -46,7 +46,7 @@ router.post("/signup", (req, res, next) => {
         console.log(
           "Username and email need to be unique. Either username or email is already taken."
         );
-        res.status(500).render("/signup", {
+        res.status(500).render("auth/signup", {
           errorMessage:
             "User not found and/or incorrect password and email combination."
         });
@@ -57,39 +57,22 @@ router.post("/signup", (req, res, next) => {
 });
 
 // GET route to display the login form to users
-router.get("/login", (req, res, next) => res.render("/index"));
+router.get("/", (req, res) => res.redirect("/index"));
 
 // POST route to handle the login form submission
 router.post("/profile-page", (req, res, next) => {
   console.log("SESSION =====> ", req.session);
   // Your existing login logic and authentication here
-  const { email, password } = req.body;
 
-  if (email === "" || password === "") {
-    res.render("index", {
-      errorMessage: "Please enter both email and password to login"
-    });
-    return;
-  }
   // Redirect the user to the profile page if login is successful
-  User.findOne({ email })
-    .then((user) => {
-      if (!user) {
-        res.render("index", {
-          errorMessage: "User not found and/or incorrrect password"
-        });
-        return;
-      } else if (bcryptjs.compareSync(password, user.passwordHash)) {
-        // console.log(user);
-        req.session.currentUser = user;
-        res.redirect("/profile-page");
-      } else {
-        res.render("index", {
-          errorMessage: "User not found/and or incorrect password"
-        });
-      }
-    })
-    .catch((error) => next(error));
+  User.findOne({ email }).then((user) => {
+    if (!user) {
+      res.render("index", {
+        errorMessage: "User not found and/or incorrrect password"
+      });
+    }
+  });
+  res.redirect("");
 });
 
 // GET route to display the profile page
