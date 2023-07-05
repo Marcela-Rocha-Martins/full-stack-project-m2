@@ -7,7 +7,7 @@
 
 body {
   font-family: "Roboto", Arial, sans-serif;
-  background-color: #F7F9FF;
+  background-color: #f7f9ff;
   padding: 0px;
   height: 100%;
   min-height: 100vh; /* Ensure the body takes up at least the full height of the viewport */
@@ -19,7 +19,7 @@ a {
   font-size: 14px;
   line-height: 1.7;
   color: #000000;
-  margin: 0px; 
+  margin: 0px;
 }
 
 li {
@@ -42,63 +42,63 @@ h2 {
 }
 
 p {
-margin-bottom: 10px;
-font-family: "Roboto", Arial, sans-serif;
+  margin-bottom: 10px;
+  font-family: "Roboto", Arial, sans-serif;
 }
 
 /*-------------- NAVBAR --------------*/
 
 nav {
-    display: flex;
-    align-items: center;
-    background-color: #211D58;
-    justify-content: space-between;
-    padding: 15px;
-    color:#F7F9FF;
-    /* width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #211d58;
+  justify-content: space-between;
+  padding: 15px;
+  color: #f7f9ff;
+  /* width: 100%;
     height: 40px;n
     position: sticky;
     top: 0;
     left: 0;
     margin: 0;
     padding: 0; */
-  }
+}
 
-  .nav-links a {
-    color: #fff;
-  }
-  
+.nav-links a {
+  color: #fff;
+}
+
 /* LOGO */
 
 .logo img {
   width: 150px; /* Set the desired width of the logo image */
   height: auto; /* Automatically adjust the height to maintain aspect ratio */
 }
-  
-  /* NAVBAR MENU */
-  .menu {
-    display: flex;
-    gap: 1em;
-    font-size: 18px;
-  }
-  
-  .menu li:hover {
-    background-color: #2150EA;
-    border-radius: 5px;
-    transition: 0.3s ease;
-  }
-  
-  .menu li {
-    padding: 5px 14px;
-  }
 
-  /* ------------- RESPONSIVE MOBILE MENU -------------- */
+/* NAVBAR MENU */
+.menu {
+  display: flex;
+  gap: 1em;
+  font-size: 18px;
+}
 
-  /* CHECKBOX HACK */
+.menu li:hover {
+  background-color: #2150ea;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
 
-input[type=checkbox] {
+.menu li {
+  padding: 5px 14px;
+}
+
+/* ------------- RESPONSIVE MOBILE MENU -------------- */
+
+/* CHECKBOX HACK */
+
+input[type="checkbox"] {
   display: none;
-} 
+}
 
 /* HAMBURGER MENU */
 .hamburger {
@@ -109,10 +109,10 @@ input[type=checkbox] {
 
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 768px) {
- .menu {
-    display:none;
+  .menu {
+    display: none;
     position: absolute;
-    background-color:#211D58;
+    background-color: #211d58;
     right: 0;
     left: 0;
     text-align: center;
@@ -121,7 +121,7 @@ input[type=checkbox] {
 
   .menu li:hover {
     display: inline-block;
-    background-color:#2150EA;
+    background-color: #2150ea;
     transition: 0.3s ease;
   }
 
@@ -129,7 +129,7 @@ input[type=checkbox] {
     margin-top: 12px;
   }
 
-  input[type=checkbox]:checked ~ .menu {
+  input[type="checkbox"]:checked ~ .menu {
     display: block;
   }
 
@@ -144,8 +144,16 @@ input[type=checkbox] {
   }
 
   .dropdown li:hover {
-    background-color: #2150EA;
+    background-color: #2150ea;
   }
+}
+
+.logoutButton {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  line-height: 1.7;
+  color: white;
 }
 
 /* ------------- FOOTER -------------- */
@@ -186,7 +194,7 @@ input[type=checkbox] {
 }
 
 .footer .content a:hover {
-  border-bottom: 1px solid #2150EA;
+  border-bottom: 1px solid #2150ea;
 }
 
 .footer .content h4 {
@@ -228,12 +236,8 @@ footer hr {
   }
 }
 hr {
-  border: none; 
-  height: 0.5px; 
-  background-color: rgb(255, 255, 255); 
-  margin: 1rem 0; 
+  border: none;
+  height: 0.5px;
+  background-color: rgb(255, 255, 255);
+  margin: 1rem 0;
 }
-
-
-  
-  
