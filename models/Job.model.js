@@ -17,15 +17,7 @@ const jobSchema = new Schema(
       type: String,
       required: false
     },
-    jobCV: {
-      type: Schema.Types.ObjectId,
-      ref: "CV",
-      required: false
-    },
-    coverLetter: {
-      type: Schema.Types.ObjectId,
-      ref: "CoverLetter"
-    },
+    jobFiles: String,
     jobApplicationDescription: {
       type: String,
       required: true
@@ -33,6 +25,9 @@ const jobSchema = new Schema(
     jobCountry: {
       type: String,
       required: true
+    },
+    dateApplied: {
+      type: String
     },
     jobCity: {
       type: String,

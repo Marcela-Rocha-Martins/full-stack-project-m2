@@ -24,10 +24,6 @@ const userSchema = new Schema(
       type: String,
 
       required: true
-    },
-    CVfile: {
-      type: Schema.ObjectId,
-      ref: "CV"
     }
   },
   {
