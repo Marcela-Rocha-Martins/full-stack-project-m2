@@ -2,9 +2,13 @@ const { Schema, model } = require("mongoose");
 
 const jobSchema = new Schema(
   {
-    employerName: {
+    companyName: {
       type: String,
       required: true
+    },
+    creator: {
+      type: Schema.Types.ObjectId,
+      ref: "User"
     },
     employerLogo: {
       type: String
@@ -13,14 +17,7 @@ const jobSchema = new Schema(
       type: String,
       required: false
     },
-    jobCV: {
-        type: String,
-        required: false
-      },
-    coverLetter: {
-        type: String,
-        required: false
-      },
+    jobFiles: String,
     jobApplicationDescription: {
       type: String,
       required: true
@@ -28,6 +25,9 @@ const jobSchema = new Schema(
     jobCountry: {
       type: String,
       required: true
+    },
+    dateApplied: {
+      type: String
     },
     jobCity: {
       type: String,

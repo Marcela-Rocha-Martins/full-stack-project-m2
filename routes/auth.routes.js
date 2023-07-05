@@ -18,37 +18,37 @@ router.post("/signup", (req, res, next) => {
 
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   if (!regex.test(password)) {
-    res.status(500).render("signup", {
+    res.status(500).render("/signup", {
       errorMessage:
-        "Password needs to have at least 6 characters and must contain at least one number, one lowercase, and one uppercase letter.",
+        "Password needs to have at least 6 characters and must contain at least one number, one lowercase, and one uppercase letter."
     });
     return;
   }
 
   bcryptjs
-  .genSalt(saltRounds)
-  .then((salt) => bcryptjs.hash(password, salt))
-  .then((hashedPassword) => {
-    return User.create({
-      username,
-      email,
-      passwordHash: hashedPassword,
-    });
-  })
-  .then(() => {
-    // Redirect the user to the profile page after successful signup
-    res.redirect("/profile-page");
-  })
+    .genSalt(saltRounds)
+    .then((salt) => bcryptjs.hash(password, salt))
+    .then((hashedPassword) => {
+      return User.create({
+        username,
+        email,
+        passwordHash: hashedPassword
+      });
+    })
+    .then(() => {
+      // Redirect the user to the profile page after successful signup
+      res.redirect("/profile-page");
+    })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
-        res.status(500).render("signup", { errorMessage: error.message });
+        res.status(500).render("/signup", { errorMessage: error.message });
       } else if (error.code === 11000) {
         console.log(
           "Username and email need to be unique. Either username or email is already taken."
         );
-        res.status(500).render("signup", {
+        res.status(500).render("auth/signup", {
           errorMessage:
-            "User not found and/or incorrect password and email combination.",
+            "User not found and/or incorrect password and email combination."
         });
       } else {
         next(error);
@@ -57,17 +57,34 @@ router.post("/signup", (req, res, next) => {
 });
 
 // GET route to display the login form to users
-router.get("/", (req, res) => res.redirect("/profile-page"));
+router.get("/", (req, res) => res.redirect("/index"));
 
 // POST route to handle the login form submission
-router.post("/", (req, res) => {
+router.post("/profile-page", (req, res, next) => {
+  console.log("SESSION =====> ", req.session);
   // Your existing login logic and authentication here
 
   // Redirect the user to the profile page if login is successful
-  res.redirect("/profile-page");
+  User.findOne({ email }).then((user) => {
+    if (!user) {
+      res.render("index", {
+        errorMessage: "User not found and/or incorrrect password"
+      });
+    }
+  });
+  res.redirect("");
 });
 
 // GET route to display the profile page
-router.get("/profile-page", (req, res) => res.render("profile-page"));
+router.get("/profile-page", (req, res) =>
+  res.render("profile-page", { userInSession: req.session.currentUser })
+);
+
+router.post("/logout", (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) next(err);
+    res.redirect("/");
+  });
+});
 
 module.exports = router;
