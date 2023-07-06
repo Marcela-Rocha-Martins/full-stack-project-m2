@@ -10,6 +10,15 @@ const jobSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User"
     },
+    status: {
+      type: String,
+      // enum: ["firstContact", "scheduledInterviews", "onHold"],
+      required: true
+    },
+    jobTitle: {
+    type: String,
+    required: true
+    },
     employerLogo: {
       type: String
     },
@@ -20,14 +29,15 @@ const jobSchema = new Schema(
     jobFiles: String,
     jobApplicationDescription: {
       type: String,
-      required: true
+      required: false
     },
     jobCountry: {
       type: String,
       required: true
     },
     dateApplied: {
-      type: String
+      type: Date,
+      allowNull: true
     },
     jobCity: {
       type: String,

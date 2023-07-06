@@ -31,12 +31,16 @@ const authRouter = require("./routes/auth.routes");
 const jobRouter = require("./routes/jobApp.routes");
 const aboutRouter = require("./routes/about.routes");
 const editProfile = require("./routes/editProfile.routes");
+const profilePageRouter = require("./routes/profile-page.routes");
+const jobViewRouter = require("./routes/job-view.router");
 
 app.use("/", indexRoutes);
 app.use("/", authRouter);
 app.use("/", jobRouter);
 app.use("/", aboutRouter);
 app.use("/", editProfile);
+app.use("/", profilePageRouter);
+app.use("/", jobViewRouter);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

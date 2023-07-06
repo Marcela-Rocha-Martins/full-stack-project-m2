@@ -24,22 +24,37 @@
 
   <div class="container mt-4">
     <h2>Date Applied</h2>
-    <input type = "date" name = "date" class="form-control" />
+    <input type = "date" id = "dateApplied" name = "dateApplied" class="form-control" />
   </div>
 
   <div class="container mt-4">
       <h2>Job Country</h2>
-      <input type = "text" id="country" name = "jobCountry" class="form-control" />
+      <input type = "text" id="jobCountry" name = "jobCountry" class="form-control" />
   </div>
 
   <div class="container mt-4">
       <h2>Job City</h2>
-      <input type = "text" id="location" name = "jobCity" class="form-control" />
+      <input type = "text" id="jobCity" name = "jobCity" class="form-control" />
+  </div>
+
+    <div class="container mt-4">
+      <h2>Link</h2>
+      <input type = "text" id="jobApplicationLink" name = "jobApplicationLink" class="form-control" />
   </div>
 
   <div class="container mt-4">
+  <h2>Status</h2>
+  <select id="status" name="status" class="form-control">
+    <option value="">Selecione</option>
+    <option value="First Contact">First Contact</option>
+    <option value="Scheduled Interview">Scheduled Interview</option>
+    <option value="On Hold">On Hold</option>
+  </select>
+</div>
+
+  <div class="container mt-4">
     <h2>Description & comments</h2>
-    <textarea id="description" class="form-control" name= "jobApplicationDescription" rows="4"></textarea>
+    <textarea id="jobApplicationDescription" class="form-control" name= "jobApplicationDescription" rows="4"></textarea>
   </div>
 
 

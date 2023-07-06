@@ -1,5 +1,5 @@
 {
-  "name": "Full-Stack-M2",
+  "name": "full-stack-m2",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -13,6 +13,7 @@
     "connect-mongo": "^5.0.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "hbs": "^4.2.0",
@@ -26,5 +27,18 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
-  }
+  },
+  "description": "Hello edit profile about",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marcela-Rocha-Martins/full-stack-project-m2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marcela-Rocha-Martins/full-stack-project-m2/issues"
+  },
+  "homepage": "https://github.com/Marcela-Rocha-Martins/full-stack-project-m2#readme"
 }
