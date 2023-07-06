@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const User = require("../models/User.model");
+const Job = require("../models/Job.model");
 const bcryptjs = require("bcryptjs");
 const saltRounds = 10;
 const router = new Router();
@@ -85,7 +86,7 @@ router.post("/profile-page", (req, res, next) => {
       } else if (bcryptjs.compareSync(password, user.passwordHash)) {
         // console.log(user);
         req.session.currentUser = user;
-        res.render("profile-page", { userInSession: req.session.currentUser });
+        res.render("profile-page", { userInSession: req.session.currentUser, });
       } else {
         res.render("index", {
           errorMessage: "User not found/and or incorrect password"
@@ -94,6 +95,17 @@ router.post("/profile-page", (req, res, next) => {
     })
     .catch((error) => next(error));
 });
+
+//GET route to display the profile page
+router.get("/profile-page", async (req, res) => {
+  try {
+    const jobs = await Job.find({ creator: req.session.currentUser }).exec();
+    res.render("profile-page", { userInSession: req.session.currentUser, jobs });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error");
+  }
+
 // GET route to display the profile page
 
 router.get("/profile-page", isLoggedIn, (req, res) => {
@@ -106,4 +118,5 @@ router.post("/logout", (req, res, next) => {
     res.redirect("/");
   });
 });
+
 module.exports = router;

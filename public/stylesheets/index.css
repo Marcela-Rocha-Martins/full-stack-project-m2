@@ -46,27 +46,6 @@
   cursor: pointer;
 }
 
-.login-container .button:hover {
-  background-color: #2150ea;
-}
-
-.login-container p {
-  margin-bottom: 10px;
-}
-
-.login-container p a.button {
-  display: inline-block;
-  padding: 0;
-  background: none;
-  color: #2150ea;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.login-container p a.button:hover {
-  color: #ffffff;
-}
-
 .content1 {
   flex: 1;
   background-size: cover;

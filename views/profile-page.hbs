@@ -1,5 +1,3 @@
-
-{{!-- SOME COMMENTS HERE --}}
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,23 +7,20 @@
 </head>
 
 <body>
+    <h2>Personal Information</h2>
 
-  <form action=" " method="post"  enctype="multipart/form-data">
-<h2>Personal Information</h2>
-
-   <div class="column1">
-    <div class="profile-info">
-      <img src="placeholder.png" alt="User Picture">
-      <h2>{{userInSession.firstName}}</h2>
-      <p>{{userInSession.email}}</p>
+    <div class="column1">
+      <div class="profile-info">
+        <img src="placeholder.png" alt="User Picture">
+        <h2>{{userInSession.firstName}}</h2>
+        <p>{{userInSession.email}}</p>
+       
+        <a href="/profile/edit" class="button">Edit profile</a>
+      </div>
     </div>
-  </div>
- 
-</form>
 
-<div class="filter-container">
   <h2>Filter Job Applications</h2>
-  <form id="filterForm">
+    <form action="/filter-jobs" method="get" id="filterForm">
     <label for="category">Category:</label>
     <select id="category" name="category">
       <option value="">All</option>
@@ -37,14 +32,62 @@
     <label for="status">Status:</label>
     <select id="status" name="status">
       <option value="">All</option>
-      <option value="pending">Pending</option>
-      <option value="inProgress">In Progress</option>
-      <option value="completed">Completed</option>
+      <option value="First Contact">First Contact</option>
+      <option value="Scheduled Interview">Scheduled Interview</option>
+      <option value="On Hold">On Hold</option>
     </select>
 
-    <button type="submit">Filter</button>
+    <button type="button" id="filterButton">Filter</button>
+
   </form>
-</div>
-<button id="Add" type="submit">Add</button>
-<button id="saveButton" class="btn btn-primary mt-2">edit</button>
+  </div>
+  <a href="/jobs/create" class="button">New application</a>
+
+  {{#if jobs}}
+    <h2>Job Applications</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Job position</th>
+          <th>Location</th>
+          <th>Status</th>
+          <th>Date Applied</th>
+          <th>Job ID</th>
+        </tr>
+      </thead>
+      <tbody id="jobsTableBody">
+        {{#each jobs}}
+            <tr onclick="viewJob('{{_id}}')">
+            <td>{{jobTitle}} at {{companyName}}</td>
+            <td>{{jobCity}} </td>
+            <td>{{status}}</td>
+            <td>{{dateApplied}}</td>
+            <td>{{_id}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <p>No job applications found.</p>
+  {{/if}}
+
+<script>
+  const filterButton = document.getElementById('filterButton');
+  filterButton.addEventListener('click', () => {
+    const category = document.getElementById('category').value;
+    const status = document.getElementById('status').value;
+
+    const url = `/filter-jobs?category=${category}&status=${status}`;
+    window.location.href = url;
+  });
+
+   function viewJob(_id) {
+    const url = `/job/details?_id=${_id}`;
+    window.location.href = url;
+  };
+
+  </script>
 </body>
+</html>
+
+

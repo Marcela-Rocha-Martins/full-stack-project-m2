@@ -7,7 +7,8 @@
 
 body {
   font-family: "Roboto", Arial, sans-serif;
-  background-color: #f7f9ff;
+  background-color: #F7F9FF;
+  padding: 0;
   padding: 0px;
   height: 100%;
   min-height: 100vh; /* Ensure the body takes up at least the full height of the viewport */
@@ -38,7 +39,7 @@ h2 {
   font-size: 18px;
   font-family: "Roboto", Arial, sans-serif;
   margin-bottom: 8px;
-  color: rgb(8, 7, 7);
+  color: #080707;
 }
 
 p {
@@ -47,10 +48,19 @@ p {
 }
 
 /*-------------- NAVBAR --------------*/
-
 nav {
   display: flex;
   align-items: center;
+  background-color: #211D58;
+  justify-content: space-between;
+  padding: 15px;
+  color: #F7F9FF;
+}
+
+.nav-links a {
+  color: #fff;
+}
+
   background-color: #211d58;
   justify-content: space-between;
   padding: 15px;
@@ -69,7 +79,6 @@ nav {
 }
 
 /* LOGO */
-
 .logo img {
   width: 150px; /* Set the desired width of the logo image */
   height: auto; /* Automatically adjust the height to maintain aspect ratio */
@@ -81,6 +90,20 @@ nav {
   gap: 1em;
   font-size: 18px;
 }
+
+.menu li:hover {
+  background-color: #2150EA;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.menu li {
+  padding: 5px 14px;
+}
+
+/* RESPONSIVE MOBILE MENU */
+/* CHECKBOX HACK */
+input[type=checkbox] {
 
 .menu li:hover {
   background-color: #2150ea;
@@ -112,7 +135,7 @@ input[type="checkbox"] {
   .menu {
     display: none;
     position: absolute;
-    background-color: #211d58;
+    background-color: #211D58;
     right: 0;
     left: 0;
     text-align: center;
@@ -121,7 +144,7 @@ input[type="checkbox"] {
 
   .menu li:hover {
     display: inline-block;
-    background-color: #2150ea;
+    background-color: #2150EA;
     transition: 0.3s ease;
   }
 
@@ -148,6 +171,7 @@ input[type="checkbox"] {
   }
 }
 
+/* FOOTER */
 .logoutButton {
   background: transparent;
   border: none;
@@ -160,12 +184,7 @@ input[type="checkbox"] {
 
 .footer {
   background-color: #13103f;
-
-  color: rgb(251, 245, 245);
-  position: relative;
-  width: 100%;
-  bottom: 0;
-  left: 0;
+  color: #FBF5F5;
   padding: 2rem 0;
 }
 
@@ -235,9 +254,43 @@ footer hr {
     position: unset;
   }
 }
+
 hr {
   border: none;
   height: 0.5px;
-  background-color: rgb(255, 255, 255);
+  background-color: #FFF;
   margin: 1rem 0;
 }
+
+/* ------------- BUTTONS--------------- */
+
+.button{
+  display: inline-block;
+  padding: 10px 30px; /* Increase the padding to make the button larger */
+  background-color: #2150ea;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px; /* Increase the border-radius to make it more oval-shaped */
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #2347bcb3;
+}
+p a.button {
+  display: inline-block;
+  padding: 0;
+  background: none;
+  color: #2150ea;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+p a.button:hover {
+  color: #ffffff;
+}
+/*   background-color: rgb(255, 255, 255);
+  margin: 1rem 0; */
+}
+
