@@ -1,10 +1,6 @@
 <html>
   <head>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/stylesheets/signup.css"
-    />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/signup.css" />
     <link rel="stylesheet" href="/stylesheets/layout.css" />
   </head>
   <body>
@@ -18,14 +14,14 @@
               <input type="text" name="username" placeholder="Username" />
             </label>
 
-             <label>
-              Name
-              <input type="text" name="username" placeholder="Name" />
+            <label>
+              First Name
+              <input type="text" name="firstName" placeholder="First Name" />
             </label>
 
-              <label>
+            <label>
               Last Name
-              <input type="text" name="username" placeholder="Last Name" />
+              <input type="text" name="lastName" placeholder="Last Name" />
             </label>
 
             <label>
@@ -35,15 +31,19 @@
 
             <label>
               Password
-              <input type="password" name="password" placeholder="********" />
+              <input
+                type="password"
+                name="password"
+                placeholder="********"
+              />
             </label>
-          
-            <button class = "button">Create account</button>
+
+            <button type="submit">Create account</button>
 
             <!-- error message will be added here -->
             {{#if errorMessage}}
-          <p class="error">{{errorMessage}}</p>
-          {{/if}}
+              <p class="error">{{errorMessage}}</p>
+            {{/if}}
 
           </form>
         </div>

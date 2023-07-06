@@ -29,11 +29,14 @@ app.locals.appTitle = `${capitalize(projectName)}`;
 const indexRoutes = require("./routes/index.routes");
 const authRouter = require("./routes/auth.routes");
 const jobRouter = require("./routes/jobApp.routes");
+const aboutRouter = require("./routes/about.routes");
+const apiRoutes = require("./routes/api.routes");
 
 app.use("/", indexRoutes);
 app.use("/", authRouter);
 app.use("/", jobRouter);
-
+app.use("/", aboutRouter);
+app.use("/", apiRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
