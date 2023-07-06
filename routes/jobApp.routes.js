@@ -2,9 +2,10 @@ const { Router } = require("express");
 const Job = require("../models/Job.model");
 const User = require("../models/User.model");
 const fileUploader = require("../config/cloudinary.config");
+const { isLoggedOut, isLoggedIn } = require("../middleware/route-guards");
 const router = new Router();
 
-router.get("/jobs/create", (req, res) => {
+router.get("/jobs/create", isLoggedIn, (req, res) => {
   res.render("job-application");
 });
 
@@ -68,5 +69,13 @@ router.post("/jobs/:jobId/delete", (req, res, next) => {
 });
 
 module.exports = router;
+
+// const express = require("express");
+// const router = express.Router();
+
+// // Route to display the edit form
+// router.get("/job-application/edit/:id", (req, res) => {
+//   const jobId = req.params.id;
+
 
 
