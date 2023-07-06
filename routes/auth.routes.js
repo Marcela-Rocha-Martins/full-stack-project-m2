@@ -105,6 +105,7 @@ router.get("/profile-page", async (req, res) => {
     console.log(error);
     res.status(500).send("Error");
   }
+});
 
 // GET route to display the profile page
 
