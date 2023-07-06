@@ -1,0 +1,24 @@
+<div class="container">
+  <div>
+    <form action="/api/jobs" method="POST">
+      <input type="text" name="search" id="search" placeholder="Job Title" />
+      <button type="submit">Search</button>
+    </form>
+  </div>
+  <div class="jobs-list">
+    <h2>JOBS:</h2>
+    {{#if jobs}}
+      {{#each jobs}}
+
+        <h4>Employer Name: {{this.employer_name}}</h4>
+        <img src={{this.employer_logo}} alt="" />
+        <p>{{this.employer_website}}</p>
+        <p>{{this.employer_company_type}}</p>
+        <p>Job Desc: {{this.job_description}}</p>
+        <p>Location: {{this.job_country}}, {{this.job_city}}</p>
+      {{else}}
+        <p>No jobs to show. Come back later</p>
+      {{/each}}
+    {{/if}}
+  </div>
+</div>
