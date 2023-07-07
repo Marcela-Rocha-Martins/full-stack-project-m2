@@ -24,6 +24,4 @@ router.get("/filter-jobs", async (req, res, next) => {
   }
 });
 
-// Route for open jobs details
-
 module.exports = router;

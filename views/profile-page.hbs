@@ -1,93 +1,163 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title>My Profile</title>
-    <link rel="stylesheet" href="/stylesheets/profile-page.css">
-    <link rel="stylesheet" href="/stylesheets/layout.css"/>
-</head>
 
-<body>
-    <h2>Personal Information</h2>
+  <head>
 
-    <div class="column1">
-      <div class="profile-info">
-        <img src="placeholder.png" alt="User Picture">
-        <h2>{{userInSession.firstName}}</h2>
-        <p>{{userInSession.email}}</p>
-       
-        <a href="/profile/edit" class="button">Edit profile</a>
+    <title>Personal Information</title>
+    <link rel="stylesheet" href="/stylesheets/profile-page.css" />
+    <link rel="stylesheet" href="/stylesheets/layout.css" />
+
+  </head>
+
+  <body>
+    <div class="contentPage">
+      <div class="column1">
+        <div class="container">
+          <div class="box">
+            <div class="image">
+              <img
+                src="https://img.freepik.com/fotos-gratis/retrato-de-mulher-feliz-rindo_23-2148850676.jpg?"
+                alt="User Picture"
+              />
+            </div>
+            <div class="username">Welcome back,
+              {{userInSession.firstName}}</div>
+            <p>{{userInSession.email}}</p>
+          </div>
+           <h3>(Un)motivational message of the day</h3>
+          <div class="messagecard">
+            <hr />
+            <div class="motivational-message">
+              <p id="messagePlaceholder">Isso é um teste</p>
+            </div>
+          </div>
+        </div>
+         <div class="btns" id="button-edit">
+            <a href="/profile/edit" class="button">Edit profile</a>
+          </div>
+      </div>
+     
+      <div class="column2">
+        <div class="txtcontent">
+          <h2>Filter your applications here</h2>
+          <p>Use the filters to choose by category or status and check out our suggestion for new applications. Good luck!</p>
+        </div>
+
+       <div class="filterjobs">
+          <form action="/filter-jobs" method="get" id="filterForm">
+            <label for="category">Category:</label>
+            <select id="category" name="category">
+              <option value="">All</option>
+              <option value="technology">Technology</option>
+              <option value="finance">Finance</option>
+              <option value="marketing">Marketing</option>
+            </select>
+
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+              <option value="">All</option>
+              <option value="First Contact">First Contact</option>
+              <option value="Scheduled Interview">Scheduled Interview</option>
+              <option value="On Hold">On Hold</option>
+            </select>
+
+            <button type="button" id="filterButton" class="button">Filter</button>
+          </form>
+        </div>
+
+        <div class="showingthejobs">
+          {{#if jobs}}
+
+            <h2>Job Applications</h2>
+            <div class="viewofjobs">
+            <table>
+              <thead>
+                <tr>
+                  <th>Job position</th>
+                  <th>Location</th>
+                  <th>Status</th>
+                  <th>Date Applied</th>
+                  {{! <th>Job ID</th> }}
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="jobsTableBody">
+                {{#each jobs}}
+                  {{!-- <tr onclick="viewJob('{{_id}}')"> --}}
+                  <tr>
+                  <td>{{jobTitle}} at {{companyName}}</td>
+                  <td>{{jobCity}}</td>
+                  <td>{{status}}</td>
+                  <td><span class="formatted-date">{{dateApplied}}</span></td>
+                  <td>
+                    <button class="view-button" id="view-button" onclick="viewJob('{{_id}}')">View</button>
+                  </td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          {{else}}
+            <p>No job applications found.</p>
+          {{/if}}
+            </div>
+          <a href="/jobs/create" class="button">New application</a>
+          <a href="/api/jobs" class="button">View Job Board</a>
+        </div>
       </div>
     </div>
 
-  <h2>Filter Job Applications</h2>
-    <form action="/filter-jobs" method="get" id="filterForm">
-    <label for="category">Category:</label>
-    <select id="category" name="category">
-      <option value="">All</option>
-      <option value="technology">Technology</option>
-      <option value="finance">Finance</option>
-      <option value="marketing">Marketing</option>
-    </select>
+    <script>
+      
+      const filterButton = document.getElementById('filterButton');
+      filterButton.addEventListener('click', () => { const category =
+      document.getElementById('category').value; const status =
+      document.getElementById('status').value; const url =
+      `/filter-jobs?category=${category}&status=${status}`; window.location.href
+      = url; }); function viewJob(_id) { const url = `/job/details?_id=${_id}`;
+      window.location.href = url; }; function motivationalMessage() { var
+      messages = [ 
 
-    <label for="status">Status:</label>
-    <select id="status" name="status">
-      <option value="">All</option>
-      <option value="First Contact">First Contact</option>
-      <option value="Scheduled Interview">Scheduled Interview</option>
-      <option value="On Hold">On Hold</option>
-    </select>
+      "Keep going! The bills won't pay themselves.", 
+      "You're one rejection closer to success!", 
+      "Remember, every 'no' brings you closer to a 'yes'.",
+       "You're not failing; you're just practicing for success.",
+      "Opportunity is knocking... and laughing at you.", 
+      "Believe in yourself, even if no one else does. Especially if no one else does.", 
+      "Don't worry about the haters; they're just your biggest fans in disguise.", 
+      "Embrace failure; it's your path to moderate success.", 
+      "Keep pushing forward; someday you'll look back and laugh at your struggles.",
+      "Your dream job is out there... probably laughing at your resume.", 
+      "You're not lost; you're just taking the scenic route to success.", 
+      "Remember, the early bird gets the worm, but the second mouse gets the cheese.", 
+      "You're on the right track... just going in the wrong direction.", 
+      "Success is just a matter of luck... and you're incredibly unlucky.", 
+      "Keep going! Life's way too short for a stable income.", 
+       
+      ]; 
 
-    <button type="button" id="filterButton">Filter</button>
+      let i =
+      Math.floor(Math.random() * messages.length); let messagePlaceholder =
+      document.getElementById("messagePlaceholder");
+      messagePlaceholder.textContent = messages[i]; } motivationalMessage();
 
-  </form>
-  </div>
-  <a href="/jobs/create" class="button">New application</a>
+      //Job view Function
+      function viewJob(_id) { const url = `/jobs/${_id}`; window.location.href =
+      url; }
 
-  {{#if jobs}}
-    <h2>Job Applications</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Job position</th>
-          <th>Location</th>
-          <th>Status</th>
-          <th>Date Applied</th>
-          <th>Job ID</th>
-        </tr>
-      </thead>
-      <tbody id="jobsTableBody">
-        {{#each jobs}}
-            <tr onclick="viewJob('{{_id}}')">
-            <td>{{jobTitle}} at {{companyName}}</td>
-            <td>{{jobCity}} </td>
-            <td>{{status}}</td>
-            <td>{{dateApplied}}</td>
-            <td>{{_id}}</td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
-  {{else}}
-    <p>No job applications found.</p>
-  {{/if}}
+       //DataView Function
+        function formatDate(date) {
+          const formattedDate = new Date(date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
+          return formattedDate;
+        }
 
-<script>
-  const filterButton = document.getElementById('filterButton');
-  filterButton.addEventListener('click', () => {
-    const category = document.getElementById('category').value;
-    const status = document.getElementById('status').value;
+        const formattedDates = document.querySelectorAll('.formatted-date');
+        formattedDates.forEach((element) => {
+          const dateApplied = element.textContent;
+          const formattedDate = formatDate(dateApplied);
+          element.textContent = formattedDate;
+        });
+            
+    </script>
 
-    const url = `/filter-jobs?category=${category}&status=${status}`;
-    window.location.href = url;
-  });
+  </body>
 
-   function viewJob(_id) {
-    const url = `/job/details?_id=${_id}`;
-    window.location.href = url;
-  };
-
-  </script>
-</body>
 </html>
-
-

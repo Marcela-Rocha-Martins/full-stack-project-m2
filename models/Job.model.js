@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-
 const jobSchema = new Schema(
   {
     companyName: {
@@ -16,8 +15,8 @@ const jobSchema = new Schema(
       required: true
     },
     jobTitle: {
-    type: String,
-    required: true
+      type: String,
+      required: true
     },
     employerLogo: {
       type: String
@@ -31,6 +30,7 @@ const jobSchema = new Schema(
       type: String,
       required: false
     },
+    jobFiles2: String,
     jobCountry: {
       type: String,
       required: true
@@ -48,7 +48,5 @@ const jobSchema = new Schema(
     timestamps: true
   }
 );
-
 const Job = model("Job", jobSchema);
-
 module.exports = Job;

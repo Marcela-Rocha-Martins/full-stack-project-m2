@@ -1,59 +1,52 @@
 {{!-- comment here --}}
 <html>
   <head>
-    <link rel="stylesheet" href="stylesheets/layout.css" />
+    <link rel="stylesheet" href="/stylesheets/layout.css" />
+    <link rel="stylesheet" href="/stylesheets/edit-profile.css" />
   </head>
   <body>
 
    <div class="container">
-  <div class="form-container">
-    <h1>{{appTitle}}</h1>
+   <div class="form-container">
+    <h1>Update your personal information</h1>
     <form id="edit-form">
       <div class="profile-pic-container">
-          <label for="profile-pic-upload" class="upload-btn">
-              Upload Profile Picture
+         
+          <div class="profile-pic-preview-container">
+              <img id="profile-pic-preview" src="" alt="img" />
+          </div>
+           <label for="profile-pic-upload" class="upload-btn">
+              Upload Picture
               <input type="file" name="profilepic" accept="image/*" id="profile-pic-upload" />
           </label>
-          <div class="profile-pic-preview-container">
-              <img id="profile-pic-preview" src="" alt="Profile Picture Preview" />
-          </div>
+
       </div>
 
       <label>
-        Display Name
-        <input type="text" name="username" placeholder="Display Name" class="input-field" />
+        <input type="text" name="username" placeholder="Username" class="input-field" />
       </label>
 
       <label>
-        Occupation
-        <input type="text" name="Occupation" placeholder="Occupation" class="input-field" />
+
+        <input type="text" name="firstName" placeholder="First Name" class="input-field" />
       </label>
 
       <label>
-        Date of Birth
-        <input type="date" name="dob" placeholder="YYYY-MM-DD" class="input-field" />
+        <input type="text" name="lastName" placeholder="Last Name" class="input-field" />
       </label>
 
-      <label>
-        Place of Birth
-        <input type="text" name="birthplace" placeholder="Place of Birth" class="input-field" />
-      </label>
+      <email>
+        <input type="text" name="email" placeholder="email" class="input-field" />
+      </email>
 
       <label>
-        Current Residency
         <input type="text" name="residency" placeholder="Current Residency" class="input-field" />
       </label>
 
       <label>
-        Upload CVs
+        Upload files
         <input type="file" name="cvs" multiple class="input-field" />
       </label>
-
-      <label>
-        Certificate
-        <input type="file" name="certificate" multiple class="input-field" />
-      </label>
-
       <button type="submit" class="submit-btn">Save Changes</button>
 
       {{! error message will be added here }}

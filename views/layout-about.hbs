@@ -33,10 +33,23 @@
 
          {{!-- NAVIGATION MENUS --}}
           <div class="menu">
-            <li><a class="active" href="/profile-page"><i class="fa fa-fw fa-home"></i> HOME</a></li>
-            <li><a href="/about">ABOUT</a></li>
-            <li><a href="/">LOG OUT</a></li>
-         </div>
+         
+         <li>
+         <form id="home-form" action="/profile-page" method="GET">
+            <button type="submit" class="buttonMenu homeButton">
+               <i class="fa fa-fw fa-home"></i> HOME
+            </button>
+         </form>
+         </li>
+
+           <li><form id="about-form" action="/about" method="GET">
+               <button type="submit" class="buttonMenu">ABOUT</button>
+            </form></li>
+
+           <li><form id="logout-form" action="/logout" method="POST">
+               <button type="submit" class="buttonMenu logoutButton">LOGOUT</button>
+            </form></li> 
+            </div>
             </ul>
       </nav>
     

@@ -35,17 +35,7 @@ router.get("/job/details/:_id", async (req, res) => {
     const job = await Job.findById(_id);
 
     if (job) {
-      res.render("job-view", {
-        companyName: job.companyName,
-        jobTitle: job.jobTitle,
-        dateApplied: job.dateApplied,
-        jobCountry: job.jobCountry,
-        jobCity: job.jobCity,
-        status: job.status,
-        jobApplicationLink: job.jobApplicationLink,
-        jobFiles: job.jobFiles,
-        jobApplicationDescription: job.jobApplicationDescription,
-      });
+      res.render("job-view", { job: job });
     } else {
       res.status(404).send("Job not found");
     }

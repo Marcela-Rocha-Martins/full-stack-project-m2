@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-
 const userSchema = new Schema(
   {
     username: {
@@ -30,7 +29,6 @@ const userSchema = new Schema(
       type: String,
     },
     appliedJobs: [{ type: Schema.Types.ObjectId, ref: "Job" }],
-    
     passwordHash: {
       type: String,
       required: true,

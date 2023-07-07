@@ -1,35 +1,37 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <title>Job View</title>
-  <link rel="stylesheet" href="/public/stylesheets/jobview.css" />
-  <link rel="stylesheet" href="/public/stylesheets/layout.css" />
-</head>
-<body>
-  <div class="container">
-    <div class="column1">
-      <div class="content">
-        <h1 class="job-title">Company Name: {{job.companyName}}</h1>
-        <h2 class="position">Job Title: {{job.jobTitle}}</h2>
+  <head>
+    <title>Job View</title>
+    <link rel="stylesheet" href="/public/stylesheets/jobview.css" />
+    <link rel="stylesheet" href="/public/stylesheets/layout.css" />
+  </head>
+  <body>
+    {{#each jobs}}
+      <div class="container">
+        <div class="column1">
+          <div class="content">
+            <h1 class="job-title">Company Name: {{companyName}}</h1>
+            <h2 class="position">Job Title: {{jobTitle}}</h2>
+          </div>
+        </div>
+        <div class="column2">
+          <div class="content">
+            <p class="description">Date Applied: {{dateApplied}}</p>
+            <p class="description">Location:
+              {{jobCountry}},
+              {{jobCity}}</p>
+            <p class="description">Status: {{status}}</p>
+            <p class="description">Application Link:
+              {{jobApplicationLink}}</p>
+            <p class="description">CV: {{jobFiles}}</p>
+            <p class="description">Cover Letter: {{jobFiles2}}</p>
+          </div>
+        </div>
+        <div class="column3">
+          <div class="content">
+            <p class="files">Comments: {{jobApplicationDescription}}</p>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="column2">
-      <div class="content">
-        <p class="description">Date Applied: {{job.dateApplied}}</p>
-        <p class="description">Location: {{job.jobCountry}}, {{job.jobCity}}</p>
-        <p class="description">Status: {{job.status}}</p>
-        <p class="description">Application Link: {{job.jobApplicationLink}}</p>
-        <p class="description">Files: {{job.jobFiles}}</p>
-      </div>
-    </div>
-
-    <div class="column3">
-      <div class="content">
-        <p class="files">Comments: {{job.jobApplicationDescription}}</p>
-      </div>
-    </div>
-  </div>
-</body>
+    {{/each}}
+  </body>
 </html>
-

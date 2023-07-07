@@ -20,7 +20,7 @@
 
    <body>
 
-   {{!----------------- START OF NAVBAR ----------------}}
+      {{!----------------- START OF NAVBAR ----------------}}
       
       <nav class="navbar">
           {{!-- LOGO --}}
@@ -36,34 +36,46 @@
             <label for="checkbox_toggle" class="hamburger">&#9776;</label>
 
          {{!-- NAVIGATION MENUS --}}
+         
          <div class="menu">
-            <li><a class="active" href="/profile-page"><i class="fa fa-fw fa-home"></i> HOME</a></li>
-            <li><a href="/about">ABOUT</a></li>
-            <li><a href="/">LOGOUT</a></li>
-            <li><a class="active" href="/profile-page"><i class="fa fa-fw fa-home"></i> Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li>
-               <form id = "logout-form" action = "/logout" method = "POST">
-                 <button class="logoutButton">Logout</button>
-               </form>
-            </li>
-         </div>
+         
+         <li>
+         <form id="home-form" action="/profile-page" method="GET">
+            <button type="submit" class="buttonMenu homeButton">
+               <i class="fa fa-fw fa-home"></i> HOME
+            </button>
+         </form>
+         </li>
+
+           <li><form id="about-form" action="/about" method="GET">
+               <button type="submit" class="buttonMenu">ABOUT</button>
+            </form></li>
+
+           <li><form id="logout-form" action="/logout" method="POST">
+               <button type="submit" class="buttonMenu logoutButton">LOGOUT</button>
+            </form></li> 
+            </div>
             </ul>
-      </nav>
+         </nav>
     
          {{{body}}}
 
-   {{!----------------- START OF FOOTER ----------------}}
-     <div class="footer">
+      {{!----------------- START OF FOOTER ----------------}}
+
+      <div class="footer">
+         
          <div class="content">
 
             <div class="services">
+
                <h4>Services</h4>
                <p><a href="#">Job search</a></p>
                <p><a href="#">Application track</a></p>
+
             </div>
 
             <div class="social-media">
+
                <h4>Social</h4>
                <p>
                <a href="#"><i class="fab fa-linkedin"></i>Linkedin</a>
@@ -77,15 +89,18 @@
                <p>
                <a href="#"><i class="fab fa-instagram"></i>Instagram</a>
                </p>
+
             </div>
 
             <div class="details">
+
                <h4 class="address">Address</h4>
-               <p>123 Main Street, City</p>
+               <p><a href="#">Storkower Str. 132, 10407 Berlin</a></p>
                <h4 class="mobile">Mobile</h4>
                <p><a href="#">+91-12225*****</a></p>
                <h4 class="mail">Email</h4>
                <p><a href="#">justforfun@gmail.com</a></p>
+               
             </div>
 
             <div class="map">

@@ -32,11 +32,22 @@
          <ul class="nav-links">
 
          {{!-- NAVIGATION MENUS --}}
-         <div class="menu">  
-            <li><a class="active" href="/"><i class="fa fa-fw fa-home"></i> HOME</a></li>
-            <li><a href="/about/index">ABOUT</a></li> 
-         </div>
-          </ul>
+        <div class="menu">
+         
+         <li>
+         <form id="home-form" action="/" method="GET">
+            <button type="submit" class="buttonMenu homeButton">
+               <i class="fa fa-fw fa-home"></i> HOME
+            </button>
+         </form>
+         </li>
+
+           <li><form id="about-form" action="/about/index" method="GET">
+               <button type="submit" class="buttonMenu">ABOUT</button>
+            </form></li>
+
+            </div>
+            </ul>
          </nav>
     
          {{{body}}}

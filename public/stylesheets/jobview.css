@@ -2,7 +2,7 @@
 .container {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #F4F4F4;
+    background-color: #fb1b1b;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -71,3 +71,4 @@
 .button:hover {
     background-color: #0098d4;
 }
+

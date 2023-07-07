@@ -8,7 +8,8 @@ const mongoose = require("mongoose");
 
 const { isLoggedOut, isLoggedIn } = require("../middleware/route-guards");
 
-router.get("/signup", (req, res) => res.render("signup"));
+router.get("/signup", (req, res) => res.render("signup", { layout: "layout-index" }));
+
 
 router.post("/signup", (req, res, next) => {
   const { email, username, firstName, lastName, password } = req.body;
@@ -91,6 +92,7 @@ router.post("/profile-page", (req, res, next) => {
         res.render("index", {
           errorMessage: "User not found/and or incorrect password"
         });
+        return; 
       }
     })
     .catch((error) => next(error));
@@ -105,6 +107,7 @@ router.get("/profile-page", async (req, res) => {
     console.log(error);
     res.status(500).send("Error");
   }
+});
 
 // GET route to display the profile page
 

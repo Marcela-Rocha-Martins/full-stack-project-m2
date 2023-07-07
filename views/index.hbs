@@ -1,55 +1,56 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
     <link rel="stylesheet" href="stylesheets/layout.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+
+</head>
+<body>
 {{!----------------- START OF INDEX PAGE ----------------}}
 
     <div class="container">
+    
+    <div class="content1" style="background-image: url('../images/backgroundImage.jpg');">
+  
+    </div>
 
-        <div class="content1" style="background-image: url('/images/backgroundImage.jpg');">
-
-        {{!-- <h1>aqui vai o conteudo da pagina</h1> --}}
-
-      </div>
-
-    <div class="login-container">
+      <div class="login-container">
 
       <div id="form">
 
-        <h2>Login to your account</h2>
+        <h2>Sign in to your account</h2>
 
           <form action="/profile-page" method="POST">
 
-            <label> 
-              <input type="email" name="email" placeholder="Email Adress" />
-            </label>
-
-            <label>
-              <input type="password" name="password" placeholder="Password" />
-            </label>
-
-            {{!-- <a class="button">Login</a> --}}
-            <button class="button">Login</button>
-
-            {{#if errorMessage}}
-              <p class="error">{{errorMessage}}</p>
-            {{/if}}
-
-            <p>Don't have an account?
-            <a href="/signup" class="button">Create now</a></p>
-
-          </form>
-
+            <form action="/profile-page" method="POST">
+                <div class="input-row">
+                  <label class="input-icon">
+                    <i class="fas fa-user"></i>
+                    <input type="email" name="email" placeholder="Email Address" />
+                  </label>
+                </div>
+                <div class="input-row">
+                  <label class="input-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" placeholder="Password" />
+                  </label>
+                </div>
+              
+              <button type="submit" class="button {{#if errorMessage}}error{{/if}}">Login</button>
+              {{#if errorMessage}}
+                <p class="error">{{errorMessage}}</p>
+              {{/if}}
+              <hr class="divider" />
+            
+                <p>
+                      <span class="accountText">Don't have an account?<a href="/signup" class="buttonCreateAccount">Create now</a></span>
+                </p>
+            </form>
         </div>
-
-      </div>
-
     </div>
-
-    <script src="script.js"></script>
-
-  </body>
-
+</div>
+</script>
+<script src="script.js"></script>
+</body>
 </html>

@@ -1,0 +1,54 @@
+{{!-- <h1>Job Details</h1>
+
+    <h4>Company Name: {{job.companyName}}</h4>
+    <h5>Title: {{job.jobTitle}}</h5>
+    <h5>Date: {{job.dateApplied}}</h5>
+    <h5>Location: {{job.jobCity}}, {{job.jobCountry}}</h5>
+    <h5>Status: {{job.status}}</h5>
+    {{!-- <h5>CV used: <img src="{{job.jobFiles}}" alt="CV" /></h5> --}}
+{{!-- <h5>Cover Letter Used: {{job.jobFiles2}}</h5> --}}
+
+<html>
+  <head>
+    <title>Job Detail</title>
+    <link rel="stylesheet" href="/stylesheets/api-jobs.css" />
+    <link rel="stylesheet" href="/stylesheets/layout.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <section class="container job-detail">
+      <h1>Job details</h1>
+      <hr />
+      <div class="row">
+
+        <div class="col-md-6 picture">
+          <article class="character">
+            <h2> Company Name: {{job.companyName}}</h2>
+            {{!-- <img src="{{this.employer_logo}}" alt="" /> --}}
+            <hr />
+            {{!-- <p>Company Type: {{employer_company_type}}</p> --}}
+            <p><em>Job Title: {{job.jobTitle}}</em></p>
+            <p>Location: {{job.jobCountry}}, {{job.jobCity}}</p>
+            <h6>CV:
+              <a href="{{job.jobFiles}}">View CV<small></small></a>
+            </h6>
+            <h6>Cover Letter:
+              <a href="{{job.jobFiles2}}">View Cover Letter<small
+                ></small></a></h6>
+
+            <div class="btn-group" style="width: 100%">
+              <hr />
+              <a href="#" class="button">Edit</a>
+              <a href="#" class="button deletebtt">Delete</a>
+              {{!-- <a href="/movie-characters/delete/{{id}}">Delete character</a> --}}
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+  </body>
+</html>

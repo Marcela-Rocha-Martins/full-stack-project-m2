@@ -1,70 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Job Application </title>
-
+  <title>Job Application</title>
+  <link rel="stylesheet" href="/stylesheets/layout.css" />
+  <link rel="stylesheet" href="/stylesheets/job-applications.css" />
 </head>
 <body>
-  <header>
-    
-    
-  </header>
-<form action=" " method="post" enctype="multipart/form-data">
-  
-<div id="field-container">
-  <div class="container mt-4">
-    <h2>Company Name</h2>
-    <input type = "text" id="companyName" name = "companyName" class="form-control" />
-  </div>
 
-  <div class="container mt-4">
-    <h2>Job Title</h2>
-    <input type = "text" id="jobTitle" name = "jobTitle" class="form-control" />
-  </div>
+<div class="container">
+  <div class="form-container">
+    <h1>Create your job application</h1>
 
-  <div class="container mt-4">
-    <h2>Date Applied</h2>
-    <input type = "date" id = "dateApplied" name = "dateApplied" class="form-control" />
-  </div>
+    <form id="edit-form" action="/jobs/create" method="POST" enctype="multipart/form-data">
 
-  <div class="container mt-4">
-      <h2>Job Country</h2>
-      <input type = "text" id="jobCountry" name = "jobCountry" class="form-control" />
-  </div>
 
-  <div class="container mt-4">
-      <h2>Job City</h2>
-      <input type = "text" id="jobCity" name = "jobCity" class="form-control" />
-  </div>
+      <div class="container mt-4">
+        <label>
+          <input type="text" name="companyName" placeholder="Company Name" class="input-field" />
+        </label>
+      </div>
 
-    <div class="container mt-4">
-      <h2>Link</h2>
-      <input type = "text" id="jobApplicationLink" name = "jobApplicationLink" class="form-control" />
-  </div>
+      <div class="container mt-4">
+        <label>
+          <input type="text" name="jobTitle" placeholder="Job Title" class="input-field" />
+        </label>
+      </div>
 
-  <div class="container mt-4">
-  <h2>Status</h2>
-  <select id="status" name="status" class="form-control">
-    <option value="">Selecione</option>
-    <option value="First Contact">First Contact</option>
-    <option value="Scheduled Interview">Scheduled Interview</option>
-    <option value="On Hold">On Hold</option>
-  </select>
+      <div class="container mt-4">
+        <label>
+          <input type="date" name="dateApplied" placeholder="Date Applied" class="input-field" />
+        </label>
+      </div>
+
+      <div class="container mt-4">
+        <label>
+          <input type="text" name="jobCountry" placeholder="Job Country" class="input-field" />
+        </label>
+      </div>
+
+      <div class="container mt-4">
+        <label>
+          <input type="text" name="jobCity" placeholder="Job City" class="input-field" />
+        </label>
+      </div>
+
+      <div class="container mt-4">
+        <label>
+          <input type="text" name="jobApplicationLink" placeholder="Link" class="input-field" />
+        </label>
+      </div>
+
+      <div class="container mt-4">
+        <label>
+          <select name="status" class="input-field">
+            <option value="">Select</option>
+            <option value="First Contact">First Contact</option>
+            <option value="Scheduled Interview">Scheduled Interview</option>
+            <option value="On Hold">On Hold</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="container mt-4">
+        <label>
+          <textarea name="jobApplicationDescription" placeholder="Description & comments" class="input-field" rows="4"></textarea>
+        </label>
+      </div>
+
+      <div class="container mt-4">
+      <div class="form-group">
+        <label><p>Upload CV:</p>
+          <input type="file" name="jobFiles" class="form-control-file" />
+        </label>
+        <label><p>Upload Cover Letter:</p>
+          <input type="file" name="jobFiles2" class="form-control-file" />
+        </label>
+      </div>
+      <button id="saveButton" type="submit" class="submit-btn">Save</button>
+      </div>
+
+      
+
+      {{! error message will be added here }}
+      {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+      {{/if}}
+    </form>
+  </div>
 </div>
 
-  <div class="container mt-4">
-    <h2>Description & comments</h2>
-    <textarea id="jobApplicationDescription" class="form-control" name= "jobApplicationDescription" rows="4"></textarea>
-  </div>
-
-
-</div>
-  <div class="form-group">
-    <label>Upload:
-      <input type="file" name="jobFiles" class="form-control-file" />
-    </label>
-  </div>
-
-  <button id="saveButton" class="btn btn-primary mt-2">Save</button>
-</form>
 </body>
+</html>
