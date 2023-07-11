@@ -1,33 +1,37 @@
-<!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Job View</title>
-    <link rel="stylesheet" href="/public/stylesheets/jobview.css">
-    <link rel="stylesheet" href="/public/stylesheets/layout.css"/>
-</head>
-<body>
-    <div class="container">
+    <link rel="stylesheet" href="/public/stylesheets/jobview.css" />
+    <link rel="stylesheet" href="/public/stylesheets/layout.css" />
+  </head>
+  <body>
+    {{#each jobs}}
+      <div class="container">
         <div class="column1">
-            <div class="content">
-                <h1 class="job-title">Company Name: {{CompanyName}}</h1>
-                <h2 class="position">Job Title: {{JobTitle}}</h2>
-            </div>
+          <div class="content">
+            <h1 class="job-title">Company Name: {{companyName}}</h1>
+            <h2 class="position">Job Title: {{jobTitle}}</h2>
+          </div>
         </div>
-
-        <div class="column2"> 
-            <div class="content">
-                <p class="description">Date Applied: {{DateApplied}}</p>
-                <p class="description">Location: {{Location}}</p>
-            </div>
+        <div class="column2">
+          <div class="content">
+            <p class="description">Date Applied: {{dateApplied}}</p>
+            <p class="description">Location:
+              {{jobCountry}},
+              {{jobCity}}</p>
+            <p class="description">Status: {{status}}</p>
+            <p class="description">Application Link:
+              {{jobApplicationLink}}</p>
+            <p class="description">CV: {{jobFiles}}</p>
+            <p class="description">Cover Letter: {{jobFiles2}}</p>
+          </div>
         </div>
-
         <div class="column3">
-            <div class="content">
-                <p class="files">Comments: {{Comments}}</p>
-                <p class="notes">Files: {{Files}}</p>
-            </div>
+          <div class="content">
+            <p class="files">Comments: {{jobApplicationDescription}}</p>
+          </div>
         </div>
-    </div>
-</body>
+      </div>
+    {{/each}}
+  </body>
 </html>
-

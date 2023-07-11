@@ -1,30 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/signup.css" />
+    <link rel="stylesheet" href="/stylesheets/layout.css" />
+  </head>
+  <body>
+    
+    <div class="container" style="background: url('/images/signup.jpg') center/cover; background-color: rgba(0, 0, 0, 0.498);">   
+      <div class="signupContainer1">
+        <h2>Signup</h2>
+        <div class="signupText">
+        <p class="text">Fill in the fields below with your personal information</p>
+        </div>
 
-<h1>Sign Up</h1>
-
-{{!-- views/auth/signup.hbs --}}
-
-<div id="form">
-  <h2>Signup</h2>
-  <form action="/signup" method="POST">
-
-    <label> Username
-      <input type="text" name="username" placeholder="Full Name" />
-    </label>
-
-    <label> Email
-      <input type="email" name="email" placeholder="Email Adress" />
-    </label>
-
-    <label> Password
-      <input type="password" name="password" placeholder="********" />
-    </label>
-
-    <button type="submit">Create account</button>
-
-    {{!-- error message will be added here --}}
-    {{#if errorMessage}}
-    <p class="error">{{errorMessage}}</p>
-  {{/if}}
-  </form>
-</div>
+        <div class="signup-container">
+          <div id="form">
+            <form action="/signup" method="POST">
+              <label>
+                <input type="text" name="username" placeholder="Username" />
+              </label>
+              <label>
+                <input type="text" name="firstName" placeholder="First Name" />
+              </label>
+              <label>
+                <input type="text" name="lastName" placeholder="Last Name" />
+              </label>
+              <label>
+                <input type="email" name="email" placeholder="Email Address" />
+              </label>
+              <label>
+                <input type="password" name="password" placeholder="********" />
+              </label>
+              
+              <button type="submit" class="button {{#if errorMessage}}error{{/if}}">Create account</button>
+              <!-- error message will be added here -->
+              {{#if errorMessage}}
+              <p class="error">{{errorMessage}}</p>
+              {{/if}}
+              <hr class="divider" />
+            
+                <p>
+                      <span class="accountText">Do have an account?<a href="/" class="buttonCreateAccount">Log In</a></span>
+                </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
 

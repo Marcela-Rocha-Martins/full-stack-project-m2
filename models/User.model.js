@@ -1,13 +1,21 @@
 const { Schema, model } = require("mongoose");
-
 const userSchema = new Schema(
   {
-    name: {
+    username: {
       type: String,
       trim: true,
       required: [true, "Username is required!"],
-      unique: true
-
+      unique: true,
+    },
+    firstName: {
+      type: String,
+      trim: true,
+      required: [true, "name is required!"],
+    },
+    lastName: {
+      type: String,
+      trim: true,
+      required: [true, "lastname is required!"],
     },
     email: {
       type: String,
@@ -15,33 +23,23 @@ const userSchema = new Schema(
       match: [/^\S+@\S+\.\S+$/, "Provide a valid email address please!"],
       unique: true,
       lowercase: true,
-      trim: true
+      trim: true,
     },
     avatarUrl: {
-      type: String
+      type: String,
     },
-    appliedJobs: [{ type: Schema.ObjectId, ref: "Job" }],
+    appliedJobs: [{ type: Schema.Types.ObjectId, ref: "Job" }],
     passwordHash: {
       type: String,
-
-      required: true
-    },
-    applicationJob: {
-      type: Schema.Types.ObjectId,
-      ref: "Job" // WE NEED TO CHANGE IF NECESSARY
+      required: true,
     },
     CVfile: {
-      type: String
-    },
-    customAvatar: {
       type: String,
-      required: [true, "Password is required!"]
-    }
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 const User = model("User", userSchema);
-
 module.exports = User;

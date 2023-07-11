@@ -1,8 +1,20 @@
 const { Schema, model } = require("mongoose");
-
 const jobSchema = new Schema(
   {
-    employerName: {
+    companyName: {
+      type: String,
+      required: true
+    },
+    creator: {
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    },
+    status: {
+      type: String,
+      // enum: ["firstContact", "scheduledInterviews", "onHold"],
+      required: true
+    },
+    jobTitle: {
       type: String,
       required: true
     },
@@ -13,21 +25,19 @@ const jobSchema = new Schema(
       type: String,
       required: false
     },
-    jobCV: {
-        type: String,
-        required: false
-      },
-    coverLetter: {
-        type: String,
-        required: false
-      },
+    jobFiles: String,
     jobApplicationDescription: {
       type: String,
-      required: true
+      required: false
     },
+    jobFiles2: String,
     jobCountry: {
       type: String,
       required: true
+    },
+    dateApplied: {
+      type: Date,
+      allowNull: true
     },
     jobCity: {
       type: String,
@@ -38,7 +48,5 @@ const jobSchema = new Schema(
     timestamps: true
   }
 );
-
 const Job = model("Job", jobSchema);
-
 module.exports = Job;
