@@ -1,9 +1,10 @@
-![](https://hackmd.io/_uploads/H1eF_mmYh.png)
+![image](https://github.com/Marcela-Rocha-Martins/full-stack-project-m2/assets/134652785/317e1c8d-81a8-45a3-925c-b3aaceb760d2)
+
 This project was developed as a group project during our time at [Ironhack](https://www.ironhack.com/) | Berlin, Germany
 ---------
 ## Description!
 ![](https://hackmd.io/_uploads/Hk_Gr7XFh.png)
-**JobQuest** :dardo_no_alvo: is a user-friendly job search app that simplifies your job application process. With **JobQuest**, you can effortlessly register and save your data, customize your information to match job requirements, upload and manage multiple resumes, easily apply with matching resumes, and stay organized with an overview of your job search. Say goodbye to scattered applications and hello to an organized and stress-free job search with **JobQuest!**
+**JobQuest** 🎯 is a user-friendly job search app that simplifies your job application process. With **JobQuest**, you can effortlessly register and save your data, customize your information to match job requirements, upload and manage multiple resumes, easily apply with matching resumes, and stay organized with an overview of your job search. Say goodbye to scattered applications and hello to an organized and stress-free job search with **JobQuest!**
 - Signup
 - Customize
 - Apply
